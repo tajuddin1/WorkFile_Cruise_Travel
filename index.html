@@ -38,6 +38,23 @@
       border: none;
     }
 
+    .pulse {
+      position: relative;
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 #ffd014;
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 215, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 215, 0, 0);
+      }
+    }
+
     @media only screen and (max-width:600px) {
       table.main_temp{
         width: 100% !important;
@@ -58,7 +75,7 @@
         display: block !important;
         width: auto !important;
         padding-bottom: 20px !important;
-        text-align: center !important;
+        /* text-align: center !important; */
       }
       td.stack-column-prizes{
         display: block !important;
@@ -87,6 +104,9 @@
       h4.mobile-h4 {
         margin-top: 20px !important;
       }
+      .displayInMobile{
+        display: block !important;
+      }
     }
   </style>
 </head>
@@ -96,25 +116,6 @@
   <center style="width:100%; table-layout:fixed; background-color:#f7f7f7;">
     <table class="main_temp" role="presentation" width="600px" cellpadding="0" cellspacing="0" border="0"
       style="max-width:800px; margin:0 auto; background-color:#ffffff;">
-      <tr>
-        <td>
-          <table role="presentation" align="center" cellpadding="5" cellspacing="0" border="0" style="margin:0 auto;">
-            <tr>
-              <td style="padding:0 6px;">
-                <img src="images/social_sharing.placeholder.facebook.png" alt="Facebook"
-                  style="display:block; width:40px; height:auto; border:0;">
-              </td>
-              <td style="padding:0 6px;">
-                <img src="images/social_sharing.placeholder.twitter.png" alt="Twitter"
-                  style="display:block; width:40px; height:auto; border:0;">
-              </td>
-              <td style="padding:0 6px;">
-                <img src="images/social_sharing.placeholder.linkedin.png" alt="LinkedIn"
-                  style="display:block; width:40px; height:auto; border:0;">
-              </td>
-            </tr>
-          </table>
-      </tr>
       <tr>
         <td>
           <!-- Main container -->
@@ -156,19 +157,36 @@
                         <tr>
                           <!-- Left column -->
                           <td class="stack-column" valign="top" style="width:50%;">
-                            <h2 class="mobile-h2"
-                              style="margin:0 0 5px 0; color:#2c4a8f; font-size:22px; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
-                              Hello &lt;FirstName&gt;
-                            </h2>
+                            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                              <tr>
+                                <td>
+                                  <h2 class="mobile-h2" style="margin:0 0 10px 0; color:#2c4a8f; font-size:22px; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
+                                    Hello <span id='firstname-placeholder'> &lt;FirstName&gt; </span>
+                                  </h2>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td style="background-color: #E7F3FF; border: 1px solid #4472C4; border-radius: 8px; padding: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+                                  <p style="font-size: 14px; font-weight: 400; line-height: 1.5; margin: 0; color: #2c4a8f;">
+                                    <strong style="color: #CC0000; font-size: 13px;">CONFIRMED:</strong> As a finalist, you're
+                                    <strong style="font-size: 13px;">GUARANTEED</strong> to receive one of our
+                                    <strong style="font-size: 13px;">FOUR GRAND PRIZES</strong> during this event!
+                                    Drawing held <strong style="font-size: 13px;">LIVE</strong> via our sweepstakes platform.
+                                    All we ask is your valuable feedback!
+                                  </p>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p style="margin:10px 0 0; color:#2c4a8f; font-size:14px; line-height:1.4; font-family:Arial, Helvetica, sans-serif;">
+                                    You and your spouse are invited to attend the Cruise Travel Expo 2026 -
+                                    a fast-paced event with cruise and travel insider tips. Attend the live
+                                    drawing, share your feedback, and claim your award!
 
-                            <p
-                              style="margin:0; color:#2c4a8f; font-size:14px; line-height:1.4; font-family:Arial, Helvetica, sans-serif;">
-                              You and your spouse are invited to attend the <span
-                                style="color:#4a90e2; font-weight:700;">Cruise Travel Expo 2026.</span> A fast-paced
-                              event with cruise and travel insider tips. You're guaranteed one of four top prizes.
-                              Attend the live drawing, share your feedback, and claim your award.
-                              
-                            </p>
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
                           </td>
 
                           <!-- Right column image -->
@@ -202,9 +220,11 @@
                               Finalist Number: </h3>
                             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 8px;">
                               <tr>
-                                <td align="center" style="background-color:#ffd700; border-radius:15px; padding:12px 14px;">
-                                  <span class="mobile-number"
-                                    style="display:block; font-size:22px; font-weight:700; color:#2c4a8f; letter-spacing:4px; font-family:Arial, Helvetica, sans-serif;">FN-XXXX</span>
+                                <td align="center" style="background-color:#ffd700; border-radius:15px; padding:10px 14px;">
+                                  <span id='finalist-number' class="mobile-number"
+                                    style="display:block; font-size:28px; line-height: 1; font-weight:700; color:#2c4a8f; letter-spacing:4px; font-family:Arial, Helvetica, sans-serif;">
+                                    FN-XXXX
+                                  </span>
                                 </td>
                               </tr>
                             </table>
@@ -233,26 +253,33 @@
                   <!-- RSVP -->
                   <tr>
                     <td bgcolor="#ffffff" align="center" style="padding:0px 14px 20px;" class="mobile-padding">
-                      <a href="https://www.ourtravsaver.net" style="color:#2c4a8f; font-family:Arial, Helvetica, sans-serif;">
-                        <h2 class="mobile-h2-large"
-                          style="margin:0 0 15px 0; color:#2c4a8f; font-size:24px; text-transform: uppercase; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
-                          CONFIRM YOUR NUMER NOW BY TEXT/SMS</h2>
-                      </a>
-                      <p style="margin:0; color:#333333; font-size:14px; font-family:Arial, Helvetica, sans-serif; margin:10px 0 10px 0;">Prefer to call? Mention your Finalist Number.</p>
-                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 8px;">
                         <tr>
-                          <td align="center" style="background-color:#ffd700; border-radius:15px; padding:12px 32px;">
-                            <span class="mobile-h2-large" style="margin:0 0 10px 0; color:#2c4a8f; font-size:22px; text-transform: uppercase; font-weight:700; font-family:Arial, Helvetica, sans-serif;" >888.290.0027</span>
+                          <td align="center">
+                            <a href="" id="sms-button" class="sms-cta-link pulse" style="display: inline-block; background-color:#ffd700; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); text-decoration: none; border-radius:15px; padding:12px 32px; color:#2c4a8f; border: 1px solid #ffd014; font-size:22px; text-transform: uppercase; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
+                              CONFIRM YOUR NUMER NOW BY TEXT/SMS
+                            </a>
                           </td>
                         </tr>
                       </table>
-                      <p style="margin:0; color:#333333; font-size:14px; font-family:Arial, Helvetica, sans-serif; margin:10px 0 0 0;">Seats are Filling up Fast! RSVP Today and mention your Finalist Number.</p>
+                      <a href="" class="displayInMobile" style="display: none; margin:0; color:#333333; font-size:14px; font-weight: 700; font-family:Arial, Helvetica, sans-serif; margin:10px 0 10px 0;">Tap to open your messaging app</a>
+                      <p style="margin:0; color:#333333; font-size:14px; font-family:Arial, Helvetica, sans-serif; margin:10px 0 20px 0;">Prefer to call? Mention your Finalist Number.</p>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td align="center">
+                            <a href="" id="phone-number" class="phone-link" style="display: inline-block; background-color:#ffd700; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); text-decoration: none; border-radius:15px; padding:12px 32px; color:#2c4a8f; border: 1px solid #ffd014; font-size:22px; text-transform: uppercase; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
+                              888.290.0027
+                            </a>  
+                          </td>
+                        </tr>
+                      </table>
+                      <p style="margin:0; color:#d9534f; font-size:14px; font-family:Arial, Helvetica, sans-serif; margin:10px 0 0 0;">Seats filling fast! RSVP today.</p>
                     </td>
                   </tr>
 
                   <!-- Footer logos & legal -->
                   <tr>
-                    <td bgcolor="#ffffff" align="center" style="padding:0px 14px 20px;" class="mobile-padding">
+                    <td bgcolor="#ffffff" align="center" style="padding:0px 14px 5px;" class="mobile-padding">
                       <img src="images/email---clia-logo.jpg" alt="CLIA - Proud Member for 25 Years"
                         style="display:block; width:350px; max-width:50%; height:auto; margin:0 auto 20px; border:0;"
                         class="mobile-center">
@@ -280,6 +307,40 @@
               </td>
             </tr>
           </table>
+      </tr>
+      <tr>
+        <td bgcolor="#ffffff" align="center" style="padding:20px 14px 0px;" class="mobile-padding">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 8px;">
+            <tr>
+              <td align="center">
+                <a href="" class="sms-cta-link pulse"
+                  style="display: inline-block; background-color:#ffd700; box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); text-decoration: none; border-radius:15px; padding:12px 32px; color:#2c4a8f; border: 1px solid #ffd014; font-size:22px; text-transform: uppercase; font-weight:700; font-family:Arial, Helvetica, sans-serif;">
+                  CONFIRM YOUR NUMER NOW BY TEXT/SMS
+                </a>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <table role="presentation" align="center" cellpadding="5" cellspacing="0" border="0" style="margin:0 auto 10px;">
+            <tr>
+              <td style="padding:0 6px;">
+                <img src="images/social_sharing.placeholder.facebook.png" alt="Facebook"
+                  style="display:block; width:40px; height:auto; border:0;">
+              </td>
+              <td style="padding:0 6px;">
+                <img src="images/social_sharing.placeholder.twitter.png" alt="Twitter"
+                  style="display:block; width:40px; height:auto; border:0;">
+              </td>
+              <td style="padding:0 6px;">
+                <img src="images/social_sharing.placeholder.linkedin.png" alt="LinkedIn"
+                  style="display:block; width:40px; height:auto; border:0;">
+              </td>
+            </tr>
+          </table>
+        </td>
       </tr>
       <tr>
         <td style="background-color: #eaeaea;">
